@@ -9,7 +9,8 @@
     "copy": "node scripts/tasks.js copy",
     "clean": "node scripts/tasks.js clean",
     "fixperms": "node scripts/tasks.js fixperms",
-    "all": "node scripts/tasks.js all"
+    "autoSetup": "node scripts/tasks.js all",
+    "sagesetup": "node scripts/sage.js sagesetup"
   },
   "repository": {
     "type": "git",

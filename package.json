@@ -1,0 +1,24 @@
+{
+  "name": "theme-env2.0",
+  "version": "1.0.0",
+  "description": "A Docker-based local WordPress environment for developing custom themes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clone": "node scripts/tasks.js clone",
+    "copy": "node scripts/tasks.js copy",
+    "clean": "node scripts/tasks.js clean",
+    "fixperms": "node scripts/tasks.js fixperms",
+    "all": "node scripts/tasks.js all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/insetavijit/theme-env2.0.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/insetavijit/theme-env2.0/issues"
+  },
+  "homepage": "https://github.com/insetavijit/theme-env2.0#readme"
+}

@@ -1,0 +1,37 @@
+version: "3.9"  # Use a stable and modern Compose version
+
+services:
+  wp_site:
+    image: wordpress:latest  # Official WordPress image (Apache + PHP)
+    ports:
+      - "8000:80"  # Map localhost:8000 → container's port 80 (WordPress site)
+    environment:
+      WORDPRESS_DB_HOST: ${DB_HOST}         # DB connection host (from .env)
+      WORDPRESS_DB_NAME: ${DB_NAME}         # DB name (from .env)
+      WORDPRESS_DB_USER: ${DB_USER}         # DB user (from .env)
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD} # DB password (from .env)
+    volumes:
+      - ./themes:/var/www/html/wp-content/themes  # Mount only the themes folder (for development)
+    depends_on:
+      - wp_db  # Wait for DB container to be ready before starting WordPress
+
+  wp_db:
+    image: mariadb:10.6  # Lightweight, open-source MySQL-compatible database
+    ports:
+      - "3306:3306"  # Expose DB port so tools like MySQL Workbench can access it
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}  # Root password for MariaDB
+      MYSQL_DATABASE: ${DB_NAME}           # Auto-create this database on first run
+    volumes:
+      - db_data:/var/lib/mysql  # Persist database data in a named volume
+
+  wp_phpmyadmin:
+    image: phpmyadmin/phpmyadmin  # Web UI to access the database
+    ports:
+      - "8080:80"  # Map localhost:8080 → container's port 80 (phpMyAdmin)
+    environment:
+      PMA_HOST: ${DB_HOST}                # DB host to connect to
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD} # Authenticate with DB root password
+
+volumes:
+  db_data:  # Named volume to persist MySQL data even after container restarts

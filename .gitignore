@@ -1,0 +1,19 @@
+# -------------------------
+# 📦 Node & npm (if using Sage or any front-end build tool)
+# -------------------------
+node_modules/         # All installed npm packages (Sage, build tools, etc.)
+npm-debug.log*        # NPM error logs
+yarn.lock             # Optional: If you're not using yarn, ignore this
+package-lock.json     # Optional: If you want to ignore package lock (not recommended for prod)
+
+# -------------------------
+# 🐍 Python (if you use the clone script)
+# -------------------------
+__pycache__/
+*.py[cod]             # Compiled Python files
+*.egg-info/
+#--------------
+|   autoGen : themes folder is autogen by Clone-themes.py
+|   So no need to include
+#--------------
+themes/*
